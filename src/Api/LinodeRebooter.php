@@ -14,7 +14,7 @@ class LinodeRebooter extends ApiRebooter {
     
     /**
      * @param string $token    API Token from Linode.com
-     * @param [type] $linodeId The ID of the linode you want to control
+     * @param number $linodeId The ID of the linode you want to control
      * @param string $host     The api host
      * @param Client $client   The guzzle client to use
      */
