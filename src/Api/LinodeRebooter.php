@@ -32,7 +32,7 @@ class LinodeRebooter extends ApiRebooter {
 
     /**
      * Executes a Boot command
-     * @return GuzzleHttp\Psr7\Response
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function boot(){
         return $this->exec("linode.boot");
@@ -40,7 +40,7 @@ class LinodeRebooter extends ApiRebooter {
 
     /**
      * Executes a Reboot command
-     * @return GuzzleHttp\Psr7\Response
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function reboot(){
         return $this->exec("linode.reboot");
@@ -48,7 +48,7 @@ class LinodeRebooter extends ApiRebooter {
 
     /**
      * Executes a Shutdown command
-     * @return GuzzleHttp\Psr7\Response
+     * @return \Psr\Http\Message\ResponseInterface
      */
     public function shutdown(){
         return $this->exec("linode.shutdown");
@@ -65,7 +65,8 @@ class LinodeRebooter extends ApiRebooter {
 
     /**
      * Executes a command on the API
-     * @return GuzzleHttp\Psr7\Response
+     * @param string $action
+     * @return \Psr\Http\Message\ResponseInterface
      */
     protected function exec($action){
         $url = $this->buildRequestUrl($action);
