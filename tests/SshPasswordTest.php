@@ -27,10 +27,10 @@ class SshPasswordTest extends TestCase
     }
 
     public function testSessionGetterAndSetter(){
-        $config = new Configuration("host",22);
-        $auth   = new Password("username", "password");
-        $session= new Session($config,$auth);
-        $obj    = new PasswordRebooter("host", "username", "password", 22);
+        $config  = new Configuration("host",22);
+        $auth    = new Password("username", "password");
+        $session = new Session($config,$auth);
+        $obj     = new PasswordRebooter("host", "username", "password", 22);
         $obj->setSession($session);
         $sessionFromGetter = $obj->getSession();
         $this->assertEquals($session,$sessionFromGetter);
