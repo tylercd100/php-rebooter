@@ -38,7 +38,6 @@ $server = new LinodeRebooter($token,$linode_id);
 $server->reboot();
 # or $server->boot();
 # or $server->shutdown();
-
 ```
 
 ### SSH Password
@@ -46,7 +45,7 @@ $server->reboot();
 use Tylercd100\Rebooter\Ssh\PasswordRebooter;
 
 $host = "your-server.com";
-$user = "tyler";
+$user = "your-username";
 $pass = "your-secret-password";
 $port = 22; // The port parameter is optional and will default to 22
 
