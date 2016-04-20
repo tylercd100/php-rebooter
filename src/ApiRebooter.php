@@ -2,9 +2,7 @@
 
 namespace Tylercd100\Rebooter;
 
-abstract class ApiRebooter implements CanReboot
+abstract class ApiRebooter implements ServerController
 {
-    public function reboot(){
-        
-    }
+    // Nothing yet...
 }
