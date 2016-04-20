@@ -14,6 +14,7 @@ before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libssh2-1-dev libssh2-php
 - echo "extension = ssh2.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- php -m
 
 before_script:
 - travis_retry composer self-update
