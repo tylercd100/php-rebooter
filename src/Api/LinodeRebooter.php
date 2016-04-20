@@ -69,6 +69,6 @@ class LinodeRebooter extends ApiRebooter {
      */
     protected function exec($action){
         $url = $this->buildRequestUrl($action);
-        return $res = $this->client->request('GET', $url);
+        return $this->client->request('GET', $url);
     }
 }
