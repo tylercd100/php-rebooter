@@ -1,2 +1,20 @@
-# php-rebooter
-Reboot service via APIs such as AWS and Linode
+# PHP Rebooter
+[![Latest Version](https://img.shields.io/github/release/tylercd100/php-rebooter.svg?style=flat-square)](https://github.com/tylercd100/php-rebooter/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://travis-ci.org/tylercd100/php-rebooter.svg?branch=master)](https://travis-ci.org/tylercd100/php-rebooter)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tylercd100/php-rebooter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tylercd100/php-rebooter/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/tylercd100/php-rebooter/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/tylercd100/php-rebooter/?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56f3252c35630e0029db0187)
+[![Total Downloads](https://img.shields.io/packagist/dt/tylercd100/php-rebooter.svg?style=flat-square)](https://packagist.org/packages/tylercd100/php-rebooter)
+
+## Installation
+
+Install via [composer](https://getcomposer.org/) - In the terminal:
+```bash
+composer require tylercd100/php-rebooter
+```
+
+## Usage
+
+```php
+```
