@@ -11,10 +11,11 @@ This package will allow you to reboot, boot, and shutdown your servers remotely.
 
 Currently supported:
 - [Linode](https://www.linode.com)
+- SSH with username and password
 
 Planned support for:
 - [Amazon EC2](https://aws.amazon.com/ec2)
-- SSH
+- SSH with more options
 
 ## Installation
 
@@ -25,6 +26,7 @@ composer require tylercd100/php-rebooter
 
 ## Usage
 
+### Linode
 ```php
 use Tylercd100\Rebooter\Api\LinodeRebooter;
 
@@ -37,4 +39,20 @@ $server->reboot();
 # or $server->boot();
 # or $server->shutdown();
 
+```
+
+### SSH Password
+```php
+use Tylercd100\Rebooter\Ssh\PasswordRebooter;
+
+$host = "your-server.com";
+$user = "tyler";
+$pass = "your-secret-password";
+$port = 22; // The port parameter is optional and will default to 22
+
+$server = new PasswordRebooter($host,$user,$pass,$port);
+
+$server->reboot();
+# or $server->shutdown();
+# or $server->boot(); // Will not work as you cannot boot a powered down maching using SSH
 ```
