@@ -5,7 +5,7 @@ namespace Tylercd100\Rebooter\Api;
 use GuzzleHttp\Client;
 use Tylercd100\Rebooter\ApiRebooter;
 
-class LinodeRebooter extends ApiRebooter {
+class AwsEc2Rebooter extends ApiRebooter {
 
     protected $token;
     protected $serverId;
@@ -13,12 +13,12 @@ class LinodeRebooter extends ApiRebooter {
     protected $client;
     
     /**
-     * @param string  $token    API Token from Linode.com
-     * @param integer $serverId The ID of the linode you want to control
-     * @param string  $host     The api host
-     * @param Client  $client   The guzzle client to use
+     * @param string $token    API Token from Linode.com
+     * @param [type] $serverId The ID of the linode you want to control
+     * @param string $host     The api host
+     * @param Client $client   The guzzle client to use
      */
-    public function __construct($token, $serverId, $host = "api.linode.com", Client $client = null){
+    public function __construct($token, $serverId, $host = "ec2.amazonaws.com", Client $client = null){
 
         if(!$client instanceof Client){
             $client = new Client();
@@ -35,7 +35,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return GuzzleHttp\Psr7\Response
      */
     public function boot(){
-        return $this->exec("linode.boot");
+        return $this->exec("StartInstances");
     }
 
     /**
@@ -43,7 +43,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return GuzzleHttp\Psr7\Response
      */
     public function reboot(){
-        return $this->exec("linode.reboot");
+        return $this->exec("RebootInstances");
     }
 
     /**
@@ -51,7 +51,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return GuzzleHttp\Psr7\Response
      */
     public function shutdown(){
-        return $this->exec("linode.shutdown");
+        return $this->exec("StopInstances");
     }
 
     /**
@@ -60,7 +60,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return string
      */
     protected function buildRequestUrl($action){
-        return "https://{$this->host}/?api_key={$this->token}&api_action={$action}&LinodeID={$this->serverId}";
+        return "https://{$this->host}/?Action={$action}&InstanceId.1={$this->serverId}&AUTHPARAMS"
     }
 
     /**
