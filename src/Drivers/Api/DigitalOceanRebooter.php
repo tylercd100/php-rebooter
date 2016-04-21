@@ -1,16 +1,11 @@
 <?php
 
-namespace Tylercd100\Rebooter\Api;
+namespace Tylercd100\Rebooter\Drivers\Api;
 
 use GuzzleHttp\Client;
-use Tylercd100\Rebooter\ApiRebooter;
 
-class DigitalOceanRebooter extends ApiRebooter {
-
-    protected $token;
-    protected $server_id;
-    protected $host;
-    protected $client;
+class DigitalOceanRebooter extends ApiRebooter 
+{
     
     /**
      * @param string $token     API Token from DigitalOcean.com
@@ -19,15 +14,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * @param Client $client    The guzzle client to use
      */
     public function __construct($token, $server_id, $host = "api.digitalocean.com", Client $client = null) {
-
-        if (!$client instanceof Client) {
-            $client = new Client();
-        }
-
-        $this->client = $client;
-        $this->token = $token;
-        $this->server_id = $server_id;
-        $this->host = $host;
+        parent::__construct($token, $server_id, $host, $client);
     }
 
     /**

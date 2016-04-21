@@ -30,9 +30,9 @@ composer require tylercd100/php-rebooter
 
 ### Linode, DigitalOcean and Vultr
 ```php
-use Tylercd100\Rebooter\Api\LinodeRebooter;
-use Tylercd100\Rebooter\Api\DigitalOceanRebooter; // DigitalOcean takes the same parameters as Linode
-use Tylercd100\Rebooter\Api\VultrRebooter;        // Vultr takes the same parameters as Linode
+use Tylercd100\Rebooter\Drivers\Api\LinodeRebooter;
+use Tylercd100\Rebooter\Drivers\Api\DigitalOceanRebooter; // DigitalOcean takes the same parameters as Linode
+use Tylercd100\Rebooter\Drivers\Api\VultrRebooter;        // Vultr takes the same parameters as Linode
 
 $token = "secret";
 $server_id = 1234;
@@ -46,7 +46,7 @@ $server->reboot();
 
 ### SSH Password
 ```php
-use Tylercd100\Rebooter\Ssh\PasswordRebooter;
+use Tylercd100\Rebooter\Drivers\Ssh\PasswordRebooter;
 
 $host = "your-server.com";
 $user = "your-username";

@@ -1,11 +1,10 @@
 <?php
 
-namespace Tylercd100\Rebooter\Ssh;
+namespace Tylercd100\Rebooter\Drivers\Ssh;
 
 use Ssh\Authentication\Password;
 use Ssh\Configuration;
 use Ssh\Session;
-use Tylercd100\Rebooter\SshRebooter;
 
 class PasswordRebooter extends SshRebooter
 {

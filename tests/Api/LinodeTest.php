@@ -1,9 +1,9 @@
 <?php
 
-namespace Tylercd100\Rebooter\Tests;
+namespace Tylercd100\Rebooter\Tests\Api;
 
-use Tylercd100\Rebooter\Api\LinodeRebooter;
 use GuzzleHttp\Client;
+use Tylercd100\Rebooter\Drivers\Api\LinodeRebooter;
 
 class LinodeTest extends ApiTest
 {

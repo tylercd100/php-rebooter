@@ -1,9 +1,10 @@
 <?php
 
-namespace Tylercd100\Rebooter;
+namespace Tylercd100\Rebooter\Drivers\Ssh;
 
-use Tylercd100\Rebooter\Exceptions\MethodNotAllowedException;
 use Ssh\Session;
+use Tylercd100\Rebooter\Drivers\ServerController;
+use Tylercd100\Rebooter\Exceptions\MethodNotAllowedException;
 
 abstract class SshRebooter implements ServerController
 {

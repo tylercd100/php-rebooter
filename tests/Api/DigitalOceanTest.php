@@ -1,9 +1,9 @@
 <?php
 
-namespace Tylercd100\Rebooter\Tests;
+namespace Tylercd100\Rebooter\Tests\Api;
 
-use Tylercd100\Rebooter\Api\DigitalOceanRebooter;
 use GuzzleHttp\Client;
+use Tylercd100\Rebooter\Drivers\Api\DigitalOceanRebooter;
 
 class DigitalOceanTest extends ApiTest
 {

@@ -1,14 +1,15 @@
 <?php
 
-namespace Tylercd100\Rebooter\Tests;
+namespace Tylercd100\Rebooter\Tests\Ssh;
 
-use Ssh\Configuration;
 use Ssh\Authentication\Password;
+use Ssh\Configuration;
 use Ssh\Exec;
 use Ssh\Session;
-use Tylercd100\Rebooter\Ssh\PasswordRebooter;
+use Tylercd100\Rebooter\Drivers\Ssh\PasswordRebooter;
+use Tylercd100\Rebooter\Tests\TestCase;
 
-class SshPasswordTest extends TestCase
+class PasswordTest extends TestCase
 {
     public function testItCreatesInstanceSuccessfully(){
         $obj = new PasswordRebooter("host", "username", "password", 22);
