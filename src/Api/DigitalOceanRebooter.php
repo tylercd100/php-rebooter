@@ -5,7 +5,7 @@ namespace Tylercd100\Rebooter\Api;
 use GuzzleHttp\Client;
 use Tylercd100\Rebooter\ApiRebooter;
 
-class LinodeRebooter extends ApiRebooter {
+class DigitalOceanRebooter extends ApiRebooter {
 
     protected $token;
     protected $server_id;
@@ -13,12 +13,12 @@ class LinodeRebooter extends ApiRebooter {
     protected $client;
     
     /**
-     * @param string  $token    API Token from Linode.com
-     * @param integer $server_id The ID of the linode you want to control
-     * @param string  $host     The api host
-     * @param Client  $client   The guzzle client to use
+     * @param string $token     API Token from DigitalOcean.com
+     * @param number $server_id The ID of the droplet you want to control
+     * @param string $host      The api host
+     * @param Client $client    The guzzle client to use
      */
-    public function __construct($token, $server_id, $host = "api.linode.com", Client $client = null) {
+    public function __construct($token, $server_id, $host = "api.digitalocean.com", Client $client = null) {
 
         if (!$client instanceof Client) {
             $client = new Client();
@@ -35,7 +35,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function boot() {
-        return $this->exec("linode.boot");
+        return $this->exec("power_on");
     }
 
     /**
@@ -43,7 +43,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function reboot() {
-        return $this->exec("linode.reboot");
+        return $this->exec("reboot");
     }
 
     /**
@@ -51,16 +51,25 @@ class LinodeRebooter extends ApiRebooter {
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function shutdown() {
-        return $this->exec("linode.shutdown");
+        return $this->exec("power_off");
     }
 
     /**
      * Builds the request URL for the API call
-     * @param  string $action The Linode API action
+     * @param  string $action The DigitalOcean API action
      * @return string
      */
     protected function buildRequestUrl($action) {
-        return "https://{$this->host}/?api_key={$this->token}&api_action={$action}&LinodeID={$this->server_id}";
+        return "https://{$this->host}/v2/droplets/{$this->server_id}/actions";
+    }
+
+    /**
+     * Builds the request data for the API call
+     * @param  string $action The DigitalOcean API action
+     * @return array
+     */
+    protected function buildRequestData($action) {
+        return ["type"=>$action];
     }
 
     /**
@@ -69,7 +78,11 @@ class LinodeRebooter extends ApiRebooter {
      * @return \Psr\Http\Message\ResponseInterface
      */
     protected function exec($action) {
-        $url = $this->buildRequestUrl($action);
-        return $this->client->request('GET', $url);
+        $url  = $this->buildRequestUrl($action);
+        $data = $this->buildRequestData($action);
+        return $this->client->request('POST', $url, [
+            'auth' => [$this->token, ""],
+            'form_params' => $data,
+        ]);
     }
 }

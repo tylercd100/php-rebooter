@@ -2,22 +2,22 @@
 
 namespace Tylercd100\Rebooter\Tests;
 
-use Tylercd100\Rebooter\Api\LinodeRebooter;
+use Tylercd100\Rebooter\Api\DigitalOceanRebooter;
 use GuzzleHttp\Client;
 
-class LinodeTest extends TestCase
+class DigitalOceanTest extends TestCase
 {
     public function testItCreatesInstanceSuccessfully(){
-        $obj = new LinodeRebooter("token",123456789);
-        $this->assertInstanceOf(LinodeRebooter::class,$obj);
+        $obj = new DigitalOceanRebooter("token",123456789);
+        $this->assertInstanceOf(DigitalOceanRebooter::class,$obj);
     }
 
     public function testItBuildsCorrectUrl(){
-        $obj = new LinodeRebooter("token",123456789);
+        $obj = new DigitalOceanRebooter("token",123456789);
         $actions = ['reboot','boot','shutdown'];
         foreach($actions as $action){
             $result = $this->invokeMethod($obj, 'buildRequestUrl', [$action]);
-            $expected = "https://api.linode.com/?api_key=token&api_action={$action}&LinodeID=123456789";
+            $expected = "https://api.digitalocean.com/v2/droplets/123456789/actions";
             $this->assertEquals($expected,$result);
         }
     }
@@ -26,7 +26,7 @@ class LinodeTest extends TestCase
         $methods = ['reboot','boot','shutdown'];
 
         foreach ($methods as $m) {
-            $mock = $this->getMock(LinodeRebooter::class, array('exec'), ['token',1234]);
+            $mock = $this->getMock(DigitalOceanRebooter::class, array('exec'), ['token',1234]);
             $mock->expects($this->once())
                  ->method('exec');
 
@@ -40,7 +40,7 @@ class LinodeTest extends TestCase
         $mock->expects($this->once())
              ->method('request');
 
-        $obj = new LinodeRebooter('token',1234,'asdf.com',$mock);
+        $obj = new DigitalOceanRebooter('token',1234,'asdf.com',$mock);
         $obj->reboot();
     }
 }
