@@ -1,6 +1,8 @@
 # Changelog
 
 All notable changes to `php-rebooter` will be documented in this file.
+### 1.3.0
+- Support for Vultr
 
 ### 1.2.0
 - Support for DigitalOcean
