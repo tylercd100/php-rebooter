@@ -32,12 +32,12 @@ composer require tylercd100/php-rebooter
 ```php
 use Tylercd100\Rebooter\Api\LinodeRebooter;
 use Tylercd100\Rebooter\Api\DigitalOceanRebooter; // DigitalOcean takes the same parameters as Linode
-use Tylercd100\Rebooter\Api\VultrRebooter; // Vultr takes the same parameters as Linode
+use Tylercd100\Rebooter\Api\VultrRebooter;        // Vultr takes the same parameters as Linode
 
 $token = "secret";
-$linode_id = 1234;
+$server_id = 1234;
 
-$server = new LinodeRebooter($token,$linode_id);
+$server = new LinodeRebooter($token,$server_id);
 
 $server->reboot();
 # or $server->boot();
