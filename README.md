@@ -31,6 +31,7 @@ composer require tylercd100/php-rebooter
 ### Linode
 ```php
 use Tylercd100\Rebooter\Api\LinodeRebooter;
+use Tylercd100\Rebooter\Api\DigitalOceanRebooter; // Digital Ocean takes the same parameters as Linode
 
 $token = "secret";
 $linode_id = 1234;
