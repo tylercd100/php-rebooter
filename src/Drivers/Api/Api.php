@@ -5,7 +5,7 @@ namespace Tylercd100\Rebooter\Drivers\Api;
 use GuzzleHttp\Client;
 use Tylercd100\Rebooter\Drivers\ServerController;
 
-abstract class ApiRebooter implements ServerController
+abstract class Api implements ServerController
 {
     protected $token;
     protected $server_id;

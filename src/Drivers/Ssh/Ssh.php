@@ -6,7 +6,7 @@ use Ssh\Session;
 use Tylercd100\Rebooter\Drivers\ServerController;
 use Tylercd100\Rebooter\Exceptions\MethodNotAllowedException;
 
-abstract class SshRebooter implements ServerController
+abstract class Ssh implements ServerController
 {
     /**
      * @var Session

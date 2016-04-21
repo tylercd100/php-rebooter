@@ -4,7 +4,7 @@ namespace Tylercd100\Rebooter\Drivers\Api;
 
 use GuzzleHttp\Client;
 
-class DigitalOceanRebooter extends ApiRebooter 
+class DigitalOcean extends Api 
 {
     
     /**

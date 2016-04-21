@@ -3,12 +3,12 @@
 namespace Tylercd100\Rebooter\Tests\Api;
 
 use GuzzleHttp\Client;
-use Tylercd100\Rebooter\Drivers\Api\LinodeRebooter;
+use Tylercd100\Rebooter\Drivers\Api\Linode;
 
 class LinodeTest extends ApiTest
 {
     protected $actions = ['reboot','boot','shutdown'];
-    protected $rebooterClass = LinodeRebooter::class;
+    protected $rebooterClass = Linode::class;
     protected $server_id = 123456789;
 
     protected function getCorrectUrl($action,$server_id){
@@ -16,6 +16,6 @@ class LinodeTest extends ApiTest
     }
 
     protected function getInstance(){
-        return new LinodeRebooter("token",$this->server_id);
+        return new Linode("token",$this->server_id);
     }
 }

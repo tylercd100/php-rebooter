@@ -4,7 +4,7 @@ namespace Tylercd100\Rebooter\Drivers\Api;
 
 use GuzzleHttp\Client;
 
-class VultrRebooter extends ApiRebooter 
+class Vultr extends Api 
 {
     
     /**

@@ -2,11 +2,11 @@
 
 namespace Tylercd100\Rebooter\Drivers\Ssh;
 
-use Ssh\Authentication\Password;
+use Ssh\Authentication\Password as SshPassword;
 use Ssh\Configuration;
 use Ssh\Session;
 
-class PasswordRebooter extends SshRebooter
+class Password extends Ssh
 {
     /**
      * @param string  $host     The host, url or IP address to use
@@ -16,7 +16,7 @@ class PasswordRebooter extends SshRebooter
      */
     public function __construct($host, $username, $password, $port = 22) {
         $config        = new Configuration($host, $port);
-        $auth          = new Password($username, $password);
+        $auth          = new SshPassword($username, $password);
         $this->session = new Session($config, $auth);
     }
 }
