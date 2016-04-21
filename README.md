@@ -28,7 +28,7 @@ composer require tylercd100/php-rebooter
 
 ## Usage
 
-### Linode
+### Linode and DigitalOcean
 ```php
 use Tylercd100\Rebooter\Api\LinodeRebooter;
 use Tylercd100\Rebooter\Api\DigitalOceanRebooter; // Digital Ocean takes the same parameters as Linode
