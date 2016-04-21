@@ -16,7 +16,7 @@ abstract class SshRebooter implements ServerController
      * Gets the SSH session executor
      * @return \Ssh\Exec
      */
-    public function getExec(){
+    public function getExec() {
         return $this->session->getExec();
     }
 
@@ -24,7 +24,7 @@ abstract class SshRebooter implements ServerController
      * Throws an Exception because you cannot boot a powered down machine from ssh
      * @return void
      */
-    public function boot(){
+    public function boot() {
         throw new MethodNotAllowedException("You cannot use SSH to boot a powered down server.");
     }
 
@@ -32,7 +32,7 @@ abstract class SshRebooter implements ServerController
      * Executes a Reboot command
      * @return void
      */
-    public function reboot(){
+    public function reboot() {
         $exec = $this->getExec();
         $exec->run('reboot');
     }
@@ -41,7 +41,7 @@ abstract class SshRebooter implements ServerController
      * Executes a Shutdown command
      * @return void
      */
-    public function shutdown(){
+    public function shutdown() {
         $exec = $this->getExec();
         $exec->run('shutdown -P now');
     }

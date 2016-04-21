@@ -16,8 +16,8 @@ class PasswordRebooter extends SshRebooter
      * @param integer $port     The port to use
      */
     public function __construct($host, $username, $password, $port = 22) {
-        $config        = new Configuration($host,$port);
+        $config        = new Configuration($host, $port);
         $auth          = new Password($username, $password);
-        $this->session = new Session($config,$auth);
+        $this->session = new Session($config, $auth);
     }
 }
