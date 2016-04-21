@@ -12,6 +12,7 @@ This package will allow you to reboot, boot, and shutdown your servers remotely.
 Currently supported:
 - [Linode](https://www.linode.com)
 - [DigitalOcean](https://www.digitalocean.com)
+- [Vultr](https://www.vultr.com)
 - SSH with username and password
 
 Planned support for:
