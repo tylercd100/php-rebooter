@@ -1,6 +1,6 @@
 {
     "name": "tylercd100/php-rebooter",
-    "description": "",
+    "description": "This package will allow you to reboot, boot, and shutdown your servers remotely.",
     "keywords": [
         "tylercd100"
     ],
