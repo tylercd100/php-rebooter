@@ -2,22 +2,26 @@
 
 namespace Tylercd100\Rebooter\Tests;
 
-use Tylercd100\Rebooter\Api\DigitalOceanRebooter;
+use Exception;
+use Tylercd100\Rebooter\Tests\TestCase;
 use GuzzleHttp\Client;
 
-class DigitalOceanTest extends TestCase
+abstract class ApiTest extends TestCase
 {
+    protected $actions = ['reboot','boot','shutdown'];
+    protected $correctUrl = "";
+
     public function testItCreatesInstanceSuccessfully(){
-        $obj = new DigitalOceanRebooter("token",123456789);
-        $this->assertInstanceOf(DigitalOceanRebooter::class,$obj);
+        $obj = $this->getInstance();
+        $this->assertInstanceOf($this->rebooterClass,$obj);
     }
 
     public function testItBuildsCorrectUrl(){
-        $obj = new DigitalOceanRebooter("token",123456789);
-        $actions = ['reboot','boot','shutdown'];
-        foreach($actions as $action){
+        $obj = $this->getInstance();
+        $server_id = $this->server_id;
+        foreach($this->actions as $action){
             $result = $this->invokeMethod($obj, 'buildRequestUrl', [$action]);
-            $expected = "https://api.digitalocean.com/v2/droplets/123456789/actions";
+            $expected = $this->getCorrectUrl($action,$server_id);
             $this->assertEquals($expected,$result);
         }
     }
@@ -26,7 +30,7 @@ class DigitalOceanTest extends TestCase
         $methods = ['reboot','boot','shutdown'];
 
         foreach ($methods as $m) {
-            $mock = $this->getMock(DigitalOceanRebooter::class, array('exec'), ['token',1234]);
+            $mock = $this->getMock($this->rebooterClass, array('exec'), ['token',1234]);
             $mock->expects($this->once())
                  ->method('exec');
 
@@ -40,7 +44,7 @@ class DigitalOceanTest extends TestCase
         $mock->expects($this->once())
              ->method('request');
 
-        $obj = new DigitalOceanRebooter('token',1234,'asdf.com',$mock);
+        $obj = new $this->rebooterClass('token',1234,'asdf.com',$mock);
         $obj->reboot();
     }
 }

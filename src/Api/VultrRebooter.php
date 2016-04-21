@@ -80,6 +80,7 @@ class VultrRebooter extends ApiRebooter {
     protected function exec($action){
         $url  = $this->buildRequestUrl($action);
         $data = $this->buildRequestData($action);
+
         return $this->client->request('POST', $url, [
             'headers' => [
                 'API-Key' => $this->token,
