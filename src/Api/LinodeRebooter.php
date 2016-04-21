@@ -8,17 +8,17 @@ use Tylercd100\Rebooter\ApiRebooter;
 class LinodeRebooter extends ApiRebooter {
 
     protected $token;
-    protected $linodeId;
+    protected $server_id;
     protected $host;
     protected $client;
     
     /**
-     * @param string $token    API Token from Linode.com
-     * @param number $linodeId The ID of the linode you want to control
-     * @param string $host     The api host
-     * @param Client $client   The guzzle client to use
+     * @param string $token     API Token from Linode.com
+     * @param number $server_id The ID of the linode you want to control
+     * @param string $host      The api host
+     * @param Client $client    The guzzle client to use
      */
-    public function __construct($token, $linodeId, $host = "api.linode.com", Client $client = null){
+    public function __construct($token, $server_id, $host = "api.linode.com", Client $client = null){
 
         if(!$client instanceof Client){
             $client = new Client();
@@ -26,7 +26,7 @@ class LinodeRebooter extends ApiRebooter {
 
         $this->client = $client;
         $this->token = $token;
-        $this->linodeId = $linodeId;
+        $this->server_id = $server_id;
         $this->host = $host;
     }
 
@@ -60,7 +60,7 @@ class LinodeRebooter extends ApiRebooter {
      * @return string
      */
     protected function buildRequestUrl($action){
-        return "https://{$this->host}/?api_key={$this->token}&api_action={$action}&LinodeID={$this->linodeId}";
+        return "https://{$this->host}/?api_key={$this->token}&api_action={$action}&LinodeID={$this->server_id}";
     }
 
     /**
