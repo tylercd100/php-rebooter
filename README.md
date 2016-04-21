@@ -17,7 +17,6 @@ Currently supported:
 
 Planned support for:
 - [Amazon EC2](https://aws.amazon.com/ec2)
-- [Vultr](https://www.vultr.com)
 - SSH with more options
 
 ## Installation
@@ -29,10 +28,11 @@ composer require tylercd100/php-rebooter
 
 ## Usage
 
-### Linode and DigitalOcean
+### Linode, DigitalOcean and Vultr
 ```php
 use Tylercd100\Rebooter\Api\LinodeRebooter;
 use Tylercd100\Rebooter\Api\DigitalOceanRebooter; // DigitalOcean takes the same parameters as Linode
+use Tylercd100\Rebooter\Api\VultrRebooter; // Vultr takes the same parameters as Linode
 
 $token = "secret";
 $linode_id = 1234;

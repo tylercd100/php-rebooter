@@ -13,8 +13,8 @@ class VultrRebooter extends ApiRebooter {
     protected $client;
     
     /**
-     * @param string $token     API Token from DigitalOcean.com
-     * @param number $server_id The ID of the droplet you want to control
+     * @param string $token     API Token from vultr.com
+     * @param number $server_id The ID of the server you want to control (Vultr calls it the `SUBID`)
      * @param string $host      The api host
      * @param Client $client    The guzzle client to use
      */
@@ -56,7 +56,7 @@ class VultrRebooter extends ApiRebooter {
 
     /**
      * Builds the request URL for the API call
-     * @param  string $action The DigitalOcean API action
+     * @param  string $action The Vultr API action
      * @return string
      */
     protected function buildRequestUrl($action){
@@ -65,7 +65,7 @@ class VultrRebooter extends ApiRebooter {
 
     /**
      * Builds the request data for the API call
-     * @param  string $action The DigitalOcean API action
+     * @param  string $action The Vultr API action
      * @return array
      */
     protected function buildRequestData($action){
