@@ -18,9 +18,9 @@ class DigitalOceanRebooter extends ApiRebooter {
      * @param string $host      The api host
      * @param Client $client    The guzzle client to use
      */
-    public function __construct($token, $server_id, $host = "api.digitalocean.com", Client $client = null){
+    public function __construct($token, $server_id, $host = "api.digitalocean.com", Client $client = null) {
 
-        if(!$client instanceof Client){
+        if (!$client instanceof Client) {
             $client = new Client();
         }
 
@@ -34,7 +34,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * Executes a Boot command
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function boot(){
+    public function boot() {
         return $this->exec("power_on");
     }
 
@@ -42,7 +42,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * Executes a Reboot command
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function reboot(){
+    public function reboot() {
         return $this->exec("reboot");
     }
 
@@ -50,7 +50,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * Executes a Shutdown command
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function shutdown(){
+    public function shutdown() {
         return $this->exec("power_off");
     }
 
@@ -59,7 +59,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * @param  string $action The DigitalOcean API action
      * @return string
      */
-    protected function buildRequestUrl($action){
+    protected function buildRequestUrl($action) {
         return "https://{$this->host}/v2/droplets/{$this->server_id}/actions";
     }
 
@@ -68,7 +68,7 @@ class DigitalOceanRebooter extends ApiRebooter {
      * @param  string $action The DigitalOcean API action
      * @return array
      */
-    protected function buildRequestData($action){
+    protected function buildRequestData($action) {
         return ["type"=>$action];
     }
 
@@ -77,11 +77,11 @@ class DigitalOceanRebooter extends ApiRebooter {
      * @param string $action
      * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function exec($action){
+    protected function exec($action) {
         $url  = $this->buildRequestUrl($action);
         $data = $this->buildRequestData($action);
         return $this->client->request('POST', $url, [
-            'auth' => [$this->token,""],
+            'auth' => [$this->token, ""],
             'form_params' => $data,
         ]);
     }
