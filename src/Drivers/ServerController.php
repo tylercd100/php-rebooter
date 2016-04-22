@@ -1,6 +1,6 @@
 <?php
 
-namespace Tylercd100\Rebooter;
+namespace Tylercd100\Rebooter\Drivers;
 
 interface ServerController
 {

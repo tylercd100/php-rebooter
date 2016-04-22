@@ -1,10 +1,10 @@
 <?php
 
-namespace Tylercd100\Rebooter\Tests;
+namespace Tylercd100\Rebooter\Tests\Api;
 
 use Exception;
-use Tylercd100\Rebooter\Tests\TestCase;
 use GuzzleHttp\Client;
+use Tylercd100\Rebooter\Tests\TestCase;
 
 abstract class ApiTest extends TestCase
 {
