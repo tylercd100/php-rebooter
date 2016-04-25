@@ -4,6 +4,7 @@ All notable changes to `php-rebooter` will be documented in this file.
 
 ### 2.0.0
 - Organized namespaces and folders
+- Changed all class names
 
 ### 1.3.0
 - Support for Vultr
